@@ -1,4 +1,4 @@
-name: 清理旧的工作流运行记录
+name: Clean up old workflow execution records
 on:
   schedule:
     - cron: '0 */24 * * *'
