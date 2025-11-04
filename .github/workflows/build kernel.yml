@@ -1,4 +1,4 @@
-name: A内核编译
+name: A-kernel
 
 permissions:
   contents: read
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       kernel_to_build:
-        description: "选择内核版本"
+        description: "Select kernel version"
         required: true
         type: choice
         options:
@@ -59,7 +59,7 @@ on:
           - "android15_6.6_X_lts_"
         default: "android14_6.1_75_2024-05_"
       kernelsu_branch:
-        description: "选择SukiSU功能分支"
+        description: "Select the SukiSU"
         required: true
         type: choice
         options:
@@ -67,21 +67,21 @@ on:
           - Dev
         default: Dev
       custom_version_suffix:
-        description: '自定义内核内部版本后缀(uname -r), 留空则使用默认值'
+        description: 'Custom kernel internal version susfs (uname -r), If left blank, the default value will be used'
         required: false
         type: string
       use_zram:
-        description: '启用额外ZRAM算法'
+        description: 'Enable additional ZRAM '
         required: true
         type: boolean
         default: true
       use_kpm:
-        description: '启用KPM功能'
+        description: 'Enable KPM function'
         required: true
         type: boolean
         default: false
       upload_to_release:
-        description: '是否上传到 GitHub Release'
+        description: 'Upload to GitHub Release'
         required: true
         type: choice
         options:
