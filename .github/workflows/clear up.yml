@@ -5,21 +5,21 @@ on:
   workflow_dispatch:
     inputs:
       days:
-        description: '为每个工作流保留的运行记录天数'
+        description: 'Number of days to retain runtime records for each workflow'
         required: true
         default: '7'
         type: string
       minimum_runs:
-        description: '为每个工作流保留的最小运行次数'
+        description: 'Minimum number of runs to retain for each workflow'
         required: true
         default: '6'
         type: string
       delete_workflow_pattern:
-        description: '要清理的工作流名称或文件名 (如果未设置，则针对所有工作流)'
+        description: 'The workflow name or file name to be cleaned (If not set, it applies to all workflows.)'
         required: false
         type: string
       delete_workflow_by_state_pattern:
-        description: '按工作流状态筛选: active, deleted, disabled_fork, disabled_inactivity, disabled_manually'
+        description: 'Filter by workflow status: active, deleted, disabled_fork, disabled_inactivity, disabled_manually'
         required: false
         default: "ALL"
         type: choice
@@ -30,7 +30,7 @@ on:
           - disabled_inactivity
           - disabled_manually
       delete_run_by_conclusion_pattern:
-        description: '按运行结论移除运行记录: action_required, cancelled, failure, skipped, success'
+        description: 'Remove running records based on running conclusions.: action_required, cancelled, failure, skipped, success'
         required: false
         default: "ALL"
         type: choice
@@ -43,14 +43,14 @@ on:
           - skipped
           - success
       dry_run:
-        description: '记录模拟的更改，不执行实际删除操作'
+        description: 'Record simulated changes, but do not perform actual deletion operations.'
         required: false
         default: false
         type: boolean
 
 jobs:
   cleanup_workflow_runs:
-    name: 删除旧的工作流运行记录作业
+    name: Delete old workflow run records jobs
     runs-on: ubuntu-latest
     permissions:
       actions: write
